@@ -1,13 +1,16 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "../type/direction.h"
 namespace mem {
     struct mem_node final{
-        mem_node ():mem_node("") {}
-        mem_node(std::string commit) {
+        mem_node ():mem_node("", nullptr) {}
+        mem_node(std::string commit, di::direction* direct) {
             this->commit = commit;
             this->next = nullptr;
+            this->direct = direct;
         }
+        di::direction* direct;
         std::string commit;
         mem_node* next;
     };
@@ -17,7 +20,7 @@ namespace mem {
             mem_node* root;
         public:
             void add_commit(std::string commit) {
-                mem_node* node = new mem_node(commit);
+                mem_node* node = new mem_node(commit, di::make_direction(L"C:\\Users\\SystemX\\Documents\\test"));
                 if (root == nullptr) {
                     root = node;
                 } else {

@@ -12,14 +12,15 @@ namespace fi
         std::vector<std::wstring> lines;
         std::wstring type_file;
     };
+    
     std::wstring getFileExtension(const std::wstring& filename) {
         std::size_t dotPosition = filename.find_last_of(L'.');
         if (dotPosition != std::wstring::npos && dotPosition != 0) {
             return filename.substr(dotPosition);
         }
-    
         return L""; 
     }
+    
     fi::file* make_file(std::wstring path) {
         fi::file* file = new fi::file();
         std::wifstream ifstream(path.c_str());
@@ -45,6 +46,7 @@ namespace fi
         file->type_file = getFileExtension(path);
         return file;
     }
+
     void print_file(fi::file* file) {
         std::wcout << L"{ path:= " << file->path 
         << L", size_file:= " << file->size_file 

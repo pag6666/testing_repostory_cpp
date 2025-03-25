@@ -8,7 +8,8 @@ int main(int argc, char* agrv []) {
     mem->log_commit(); 
     fi::file* file = fi::make_file(L"C:\\Users\\SystemX\\Documents\\test\\sd.txt");
     fi::print_file(file);
-
+    di::direction* dir = di::make_direction(L"C:\\Users\\SystemX\\Documents\\test");
+    di::print_direction(dir->path);
     delete file;
     return EXIT_SUCCESS;
 }
